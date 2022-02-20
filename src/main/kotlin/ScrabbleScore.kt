@@ -1,3 +1,5 @@
+import kotlin.system.exitProcess
+
 class ScrabbleScore {
 
     fun scoreWord(word: String): Int{
@@ -7,6 +9,7 @@ class ScrabbleScore {
 
     //TODO the program if the user enters in any chars other than capital letters...try fix this.
     //Reference: https://exercism.org/tracks/kotlin/exercises/scrabble-score/solutions?page=1
+    // Solution used from https://exercism.org/tracks/kotlin/exercises/scrabble-score/solutions/Or4ng3
     private fun scoreLetter(char: Char): Int {
         return when (char.uppercase()) {
             in "AEIOULNRST" -> 1
@@ -16,6 +19,7 @@ class ScrabbleScore {
             in "K" -> 5
             in "JX" -> 8
             in "QZ" -> 10
+            in "-1" -> exitProcess(0)
             else -> error("Unknown character")
         }
     }
